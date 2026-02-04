@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    /* Mapping Design 2 Variables to Design 3 (Active Nature) Palette */
+    --og-cream: #F2F2F2;
+    /* Design 3 Background */
+    --og-beige: #E0E0E0;
+    /* Light Grey for Borders */
+    --og-light-olive: #9AB492;
+    /* Sage Green */
+    --og-medium-olive: #C2A86C;
+    /* Gold (Accent) */
+    --og-brown: #5A6A55;
+    /* Muted Green-Grey for text */
+    --og-deep-green: #4A5F40;
+    /* Deep Moss Green */
+
+    /* Original Design 3 Vars for reference/mixins */
+    --color-sage: #9AB492;
+    --color-gold: #C2A86C;
+
+    --font-serif: 'Poppins', sans-serif;
+    /* Swapped Serif for Poppins (Display) */
+    --font-sans: 'Open Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--og-cream);
+    color: var(--og-deep-green);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    position: relative;
+    /* For Blobs */
+}
+
+/* Dynamic Shapes Background (From Design 3) */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20vh;
+    right: -10vw;
+    width: 60vw;
+    height: 60vw;
+    background-color: var(--color-sage);
+    opacity: 0.1;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    z-index: -1;
+    animation: blob-float 20s infinite linear;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -10vh;
+    left: -5vw;
+    width: 40vw;
+    height: 40vw;
+    background-color: var(--color-gold);
+    opacity: 0.1;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    z-index: -1;
+    animation: blob-float 15s infinite reverse linear;
+}
+
+@keyframes blob-float {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-serif);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.brand {
+    font-size: 1.8rem;
+    font-weight: 900;
+    /* Bolder for Active feel */
+    color: var(--og-deep-green);
+    letter-spacing: -1px;
+    /* Poppins style */
+}
+
+.brand span {
+    color: var(--color-gold);
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+}
+
+nav a {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    position: relative;
+    /* Design 3 nav style override? No, keep line style from Design 2 but make it bolder */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    /* Thicker line */
+    bottom: -4px;
+    left: 0;
+    background-color: var(--color-gold);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero Split Layout */
+.hero-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 0 0 45%;
+    /* Transparent bg to see blobs? Or slightly opaque? */
+    background-color: rgba(242, 242, 242, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+    position: relative;
+}
+
+/* Removed the SVG background pattern from Design 2 to keep it cleaner like Design 3 */
+
+.tagline {
+    color: var(--color-gold);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    background: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    align-self: flex-start;
+}
+
+.hero-text h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    color: var(--og-deep-green);
+    margin-bottom: 30px;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.hero-text p {
+    color: var(--og-brown);
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    max-width: 450px;
+    line-height: 1.8;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: var(--og-deep-green);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    font-weight: 700;
+    align-self: flex-start;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border-radius: 50px;
+    /* Rounded Design 3 style */
+    box-shadow: 0 10px 20px rgba(74, 95, 64, 0.3);
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-gold);
+    box-shadow: 0 15px 30px rgba(194, 168, 108, 0.4);
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-img-container {
+    width: 80%;
+    max-width: 550px;
+    height: 80%;
+    max-height: 600px;
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    transform: rotate(3deg);
+    box-shadow: 20px 20px 0px var(--color-sage);
+    transition: transform 0.5s ease;
+    margin-right: 20px;
+    /* Slight offset */
+}
+
+.hero-img-container:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 10px 10px 0px var(--color-gold);
+}
+
+.hero-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Graphic Overlay Elements */
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    animation: float-anim 4s infinite ease-in-out;
+}
+
+.c1 {
+    width: 60px;
+    height: 60px;
+    background: var(--color-gold);
+    top: -20px;
+    right: -20px;
+}
+
+.c2 {
+    width: 30px;
+    height: 30px;
+    background: var(--og-deep-green);
+    bottom: 30px;
+    left: -10px;
+    animation-delay: 1s;
+}
+
+@keyframes float-anim {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    font-size: 0.8rem;
+    color: var(--og-deep-green);
+    letter-spacing: 1px;
+    transform: rotate(-90deg);
+    transform-origin: left;
+    font-weight: 700;
+}
+
+.scroll-indicator::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 2px;
+    background-color: var(--og-deep-green);
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Services / Features Grid */
+.services-section {
+    padding: 100px 80px;
+    background-color: transparent;
+    /* Let body bg show through */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    color: var(--og-deep-green);
+    margin-bottom: 10px;
+    font-weight: 900;
+    font-style: normal;
+    /* Remove italic */
+}
+
+.section-header span {
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-gold);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.service-card {
+    background-color: #fff;
+    padding: 50px 30px;
+    text-align: center;
+    border: none;
+    /* Remove border */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    /* Rounded Design 3 style */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 2.5rem;
+    color: var(--color-gold);
+    margin-bottom: 20px;
+    font-family: var(--font-serif);
+    font-weight: 900;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--og-deep-green);
+    font-weight: 700;
+}
+
+.service-card p {
+    color: var(--og-brown);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Quote Section */
+.quote-section {
+    background-color: var(--og-deep-green);
+    color: var(--og-cream);
+    padding: 120px 80px;
+    text-align: center;
+    position: relative;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    margin-top: 40px;
+}
+
+.quote-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quote-content p {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-style: normal;
+    /* Remove italic */
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 40px;
+}
+
+.author {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .hero-wrapper {
+        flex-direction: column;
+    }
+
+    .hero-text {
+        flex: 1;
+        padding: 120px 40px 60px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .hero-image {
+        flex: 1;
+        min-height: 400px;
+        border-bottom-left-radius: 0;
+    }
+
+    .cta-btn {
+        align-self: center;
+    }
+
+    header {
+        padding: 20px 40px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}

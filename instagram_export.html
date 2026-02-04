@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Background Export</title>
+    <style>
+        :root {
+            --og-cream: #F2F2F2;
+            --color-sage: #9AB492;
+            --color-gold: #C2A86C;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify_content: center;
+            align-items: center;
+            background-color: #333;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #insta-canvas {
+            width: 1080px;
+            height: 1350px;
+            background-color: var(--og-cream);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Enhanced Blobs for a rich background look */
+        .blob-1 {
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, var(--color-sage) 0%, rgba(154, 180, 146, 0) 70%);
+            opacity: 0.6;
+            /* Increased visibility */
+            filter: blur(60px);
+            /* Soft blend */
+            border-radius: 50%;
+        }
+
+        .blob-2 {
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 1100px;
+            height: 1100px;
+            background: radial-gradient(circle, var(--color-gold) 0%, rgba(194, 168, 108, 0) 70%);
+            opacity: 0.6;
+            /* Increased visibility */
+            filter: blur(60px);
+            /* Soft blend */
+            border-radius: 50%;
+        }
+
+        /* Optional: Add a subtle center glow or texture */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="insta-canvas">
+        <div class="blob-1"></div>
+        <div class="blob-2"></div>
+        <div class="overlay"></div>
+    </div>
+</body>
+
+</html>
