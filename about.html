@@ -47,13 +47,16 @@
         .content-section ul {
             list-style: none;
             margin: 30px 0;
-            padding: 30px 40px; /* Balanced padding top/bottom */
+            padding: 30px 40px;
+            /* Balanced padding top/bottom */
             background-color: #fff;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            display: flex;         /* Use flexbox for better centering control if needed, but block is fine for list */
+            display: flex;
+            /* Use flexbox for better centering control if needed, but block is fine for list */
             flex-direction: column;
-            justify-content: center; /* Center vertically if height was fixed (it's not, but good practice) */
+            justify-content: center;
+            /* Center vertically if height was fixed (it's not, but good practice) */
         }
 
         .content-section ul li {
@@ -62,30 +65,38 @@
             padding-left: 20px;
             color: var(--og-deep-green);
             font-weight: 700;
-            display: flex; /* Ensure bullet and text align */
-            align-items: center; /* Vertical align text with bullet */
+            display: flex;
+            /* Ensure bullet and text align */
+            align-items: center;
+            /* Vertical align text with bullet */
         }
 
         .content-section ul li:last-child {
-            margin-bottom: 0; /* Remove bottom margin from last item to fix spacing */
+            margin-bottom: 0;
+            /* Remove bottom margin from last item to fix spacing */
         }
 
         .content-section ul li::before {
             content: '・';
             position: absolute;
             left: 0;
-            top: 0; /* Reset top */
-            height: 100%; /* Full height to center */
+            top: 0;
+            /* Reset top */
+            height: 100%;
+            /* Full height to center */
             display: flex;
-            align-items: center; /* Center bullet vertically relative to text */
+            align-items: center;
+            /* Center bullet vertically relative to text */
             color: var(--color-gold);
         }
-        
+
         /* Adjustment for multi-line list items if any */
         .content-section ul li {
-            display: block; /* Revert to block for multi-line safety */
+            display: block;
+            /* Revert to block for multi-line safety */
             line-height: 1.6;
         }
+
         .content-section ul li::before {
             top: 0;
             height: auto;
@@ -96,6 +107,14 @@
             color: var(--og-deep-green);
             font-weight: 900;
             border-bottom: 2px solid var(--color-gold);
+        }
+
+        @media (max-width: 768px) {
+
+            /* Mobile optimization: Remove forced line breaks for natural text flow */
+            .content-section p br {
+                display: none;
+            }
         }
     </style>
 </head>
